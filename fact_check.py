@@ -15,15 +15,19 @@ import requests, re, spacy
 from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
 import numpy as np
+import csv
+import preprocessor as p
+from gensim.parsing.preprocessing import remove_stopwords
+from googletrans import Translator
 
-
+translator = Translator()
 ua = UserAgent()
 nlp = spacy.load("en_core_web_sm")
 f = open('CommonWords.txt')
 commonEngWords = f.read().splitlines()
 f.close()
 popular_links = [
-        "nytimes", "wsj", "huffpost", "washingtonpost",
+        "nytimes", "wsj", "huffpost", "washingtonpost","time","republicworld",
         "latimes", "reuters", "abcnews", "usatoday",
         "bloomberg", "nbcnews", "dailymail", "theguardian",
         "thesun", "mirror", "telegraph", "bbc",
@@ -87,7 +91,7 @@ def levenshtein_ratio_and_distance(s, t, ratio_calc = False):
 
 
 
-def get_search_result(query, number_result = 5):
+def get_search_result(query, number_result = 20):
     query = urllib.parse.quote_plus(query) # Format into URL encoding
     
     
@@ -135,6 +139,20 @@ def clean_links(links, titles, descriptions):
         del titles[x]
         del descriptions[x]
     return clean_links, titles, descriptions
+
+
+def filter_links(links, titles, descriptions):
+    to_remove = []
+    for i, l in enumerate(links):
+        if not any(a in l for a in popular_links):
+            to_remove.append(i)
+            continue
+    
+    # Remove the corresponding titles & descriptions
+    links = [l for i,l in enumerate(links) if i not in to_remove]
+    titles = [t for i,t in enumerate(titles) if i not in to_remove]
+    links = [l for i,d in enumerate(descriptions) if i not in to_remove]
+    return links, titles, descriptions
     
 
 def valid_links(links):
@@ -144,33 +162,62 @@ def valid_links(links):
             no_link = no_link+1
     return no_link/len(links)
 
+
+def split_sentence(text):
+    nlp = spacy.blank('en')
+    nlp.add_pipe(PySBDFactory(nlp))
+    doc = nlp(text)
+    return([sent.text for sent in doc.sents if sent.text.isspace()==False])
+
+
 def valid_description(query, descriptions):
     temp_query = preprocessing(query)
-    score = [levenshtein_ratio_and_distance(temp_query, desc,ratio_calc = True) for desc in descriptions]
+    sentences = split_sentence(temp_query)
+    score = []
+    for q in query:
+        temp = [levenshtein_ratio_and_distance(q, sent,ratio_calc = True) for sent in sentences]
+        score.append(max(temp))
     return sum(score)/len(score)
 
 
 def preprocessing(text):
-    doc = nlp(text)
-    clean_text = ''
-    for token in doc:
-        if token.pos_ != 'PUNCT' and token.lemma_ not in commonEngWords[0:500]:
-            clean_text = clean_text+' '+token.lemma_
-    return clean_text
+    p.set_options(p.OPT.URL, p.OPT.RESERVED, p.OPT.EMOJI, p.OPT.SMILEY, p.OPT.NUMBER)
+    text = p.clean(text)
+    text = remove_stopwords(text)
+    text = text.lower().replace('[^\w\s]',' ').replace('\s\s+', ' ').replace('@','').replace('#','. ').replace('&amp;', 'and')
+    return text
 
+
+def translate_text(text):
+    result = translator.translate('Mitä sinä teet')
+    return result.text
 
     
 if __name__ == "__main__":
     query = "'trade war'"
     threshold = 0.3
-    links, titles, descriptions = get_search_result(query)
-    links, titles, descriptions = clean_links(links, titles, descriptions)
-    descriptions = [preprocessing(desc) for desc in descriptions]
-    link_score = valid_links(links)
-    desc_score = valid_description(query, descriptions)
-    if link_score<0.8 and desc_score<threshold:
-        print("\n Fake fact")
-    else:
-        print("\n Valid fact")
+    tweets = []
+    clean_tweets = []
+    labels = []
+    with open('en_dataset.csv', 'rt') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        line_count = 0
+        for row in csv_reader:
+            if line_count > 0:
+                tweets.append(row[2])
+                clean_tweets.append(preprocessing(row[2]))
+                labels.append(row[3])
+            line_count += 1
+    score = []
+    for query in tweets:
+        links, titles, descriptions = get_search_result(query)
+        links, titles, descriptions = filter_links(links, titles, descriptions)
+        #descriptions = [preprocessing(desc) for desc in descriptions]
+        if len(titles)>0:
+            titles = [preprocessing(title.lower()) for title in titles]
+            desc_score = valid_description(query, titles)
+            score.append(desc_score)
+        else:
+            score.append(0)
     
     

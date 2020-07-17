@@ -2,7 +2,7 @@
 
 
 
-This package aims to detect fake tweets regarding Covid-19 from the real ones in real-time. We use an AI based technique to process the tweet text and use it, along with user features, to classify the tweets. We are handling tweets in three different languages: English, Hindi and Bengali. The development phases of our project is shown below and the details of the steps are described in the following sub-sections.<br/>
+This package aims to detect fake tweets regarding Covid-19 from the real ones in real-time. We use an AI based technique to process the tweet text and use it, along with user features, to classify the tweets as either **REAL** or **FAKE**. We are handling tweets in three different languages: **English, Hindi and Bengali**. The development phases of our project is shown below and the details of the steps are described in the following sub-sections.<br/>
 <p align="center">
   <img width="200" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87823230-8a569f80-c890-11ea-9eef-4d1ea405ac17.png">
 </p>

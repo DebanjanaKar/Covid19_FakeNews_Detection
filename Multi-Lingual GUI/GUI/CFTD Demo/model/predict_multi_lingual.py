@@ -296,7 +296,7 @@ def predict(tweet_id):
     
     final_encoding = np.asarray(final_encoding)
     
-    path = r"C:\Users\Mohit Bhardwaj\Downloads\Covid Project For me\GUI\CFTD Demo\model\rfc_mbert_embeddings_text_user.pkl"
+    path = r"rfc_mbert_embeddings_text_user.pkl"
     rfc = joblib.load(path)
     
     result = rfc.predict_proba(final_encoding.reshape(1,-1))

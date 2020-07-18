@@ -1,11 +1,11 @@
 # तथ्यCov :: Covid19 related Fake Tweet Detection
 <p align="center">
-<img width="800" height="200" alt="title" src="https://user-images.githubusercontent.com/19144385/87828882-9300a300-c89b-11ea-8e18-6325dfe88dfb.png">
+<img width="1000" height="200" alt="title" src="https://user-images.githubusercontent.com/19144385/87828882-9300a300-c89b-11ea-8e18-6325dfe88dfb.png">
 </p>
 
 This package aims to detect fake tweets regarding Covid-19 from the real ones in real-time. We use an AI based technique to process the tweet text and use it, along with user features, to classify the tweets as either **REAL** or **FAKE**. We are handling tweets in three different languages: **English, Hindi and Bengali**. The development phases of our project is shown below and the details of the steps are described in the following sub-sections.<br/>
 <p align="center">
-  <img width="200" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87829258-4a95b500-c89c-11ea-8c86-078d4b1e1b9c.png"
+  <img width="300" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87848329-cf182000-c8fc-11ea-9e1f-11d9466c5e6e.png">
 </p>
 
 ## DATASET USED:

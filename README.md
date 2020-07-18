@@ -1,15 +1,15 @@
 # तथ्यCov :: Covid19 related Fake Tweet Detection
 <p align="center">
-<img width="800" height="200" alt="title" src="https://user-images.githubusercontent.com/19144385/87828882-9300a300-c89b-11ea-8e18-6325dfe88dfb.png">
+<img width="1000" height="200" alt="title" src="https://user-images.githubusercontent.com/19144385/87828882-9300a300-c89b-11ea-8e18-6325dfe88dfb.png">
 </p>
 
 This package aims to detect fake tweets regarding Covid-19 from the real ones in real-time. We use an AI based technique to process the tweet text and use it, along with user features, to classify the tweets as either **REAL** or **FAKE**. We are handling tweets in three different languages: **English, Hindi and Bengali**. The development phases of our project is shown below and the details of the steps are described in the following sub-sections.<br/>
 <p align="center">
-  <img width="200" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87829258-4a95b500-c89c-11ea-8c86-078d4b1e1b9c.png"
+  <img width="300" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87848329-cf182000-c8fc-11ea-9e1f-11d9466c5e6e.png">
 </p>
 
 ## DATASET USED:
-We use the Infodemic dataset (https://github.com/firojalam/COVID-19-tweets-for-check-worthiness) for training purpose. We consider the English tweets from the Infodemic dataset and scrap Bengali and Hindi tweets from the twitter which are related to Covid-19. Fresh annotations were done and incorporated to create a larger Indic dataset for this task. For this purpose, scraping and parsing  tools were created which might be helpful to further mine Indic data.
+We use the **Infodemic dataset** (https://github.com/firojalam/COVID-19-tweets-for-check-worthiness) for training purpose. We consider the English tweets from the Infodemic dataset and scrap Bengali and Hindi tweets from the twitter which are related to Covid-19. Fresh annotations were done and incorporated to create a larger Indic dataset for this task. For this purpose, scraping and parsing  tools were created which might be helpful to further mine Indic data.
 
 ## METHOD:
 We experimented with two different models to handle the tweet classification. In one settings, we consider a mono-lingual model, for handling English tweets. We extend the concept, by replacing the classifier with the multi-lingual one, where we consider tweets from English, Hindi and Bengali languages, as of now. Due to less complexity, the monolingual classifier achieves better result and also beats the State of the Art (SOTA) result on Infodemic dataset. On the other hand, the multi-lingual classifier gives comparable performance, while supporting multiple languages. We discuss both of these classifiers in details in the following sub-sections.
@@ -28,7 +28,7 @@ We use various textual and user related features for the classification task. Th
         <p align="center">
           <img width="682" alt="mono_features" src="https://user-images.githubusercontent.com/19144385/87824733-706a8c00-c893-11ea-9b9e-d936fd581675.png">
         </p>
-    It is evident from the correlation plots that subset of user features and tweet features are helpful. We leave it for the classifier to weigh the relevant features accordingly, for the final classification task. For this purpose, we have used random forest classifier. We also experimented with different classifiers, details of which is shown below.
+    It is evident from the correlation plots that subset of user features and tweet features are helpful. We leave it for the classifier to weigh the relevant features accordingly, for the final classification task. For this purpose, we have used Random Forest Classifier. We also experimented with different other classifiers, details of which is given below.
     <p align="center">
        <img width="500" alt="mono_result" src="https://user-images.githubusercontent.com/19144385/87823203-7f9c0a80-c890-11ea-86dd-486f59324418.png">
     </p>
@@ -38,10 +38,10 @@ The architecture of the multi-lingual classifier is shown below:
 <p align="center">
   <img width="600" alt="ml_ar" src="https://user-images.githubusercontent.com/19144385/87823189-7b6fed00-c890-11ea-9d72-ba52e130739c.png">
 </p>
-The usual tweet preprocessing is done (as mentioned above) and we use four different types of features for this task, which are as follows:
+The tweet preprocessing is done (as mentioned above) and we use four different types of features for this task, which are as follows:
   <ul>
     <li> sentence encoding of the tweet using pretrained multilingual BERT (mBERT) model </li>
-    <li> link score - Ratio of similarity calculated between a given tweet and titles of mined URLs obtained on querying the tweet on Google Search Engine (algorithm given below) <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823179-77dc6600-c890-11ea-8295-e847f5b48d07.png"> </p> </li>
+    <li> link score - Ratio of similarity calculated between a given tweet and titles of verified URL list obtained on querying the tweet on Google Search Engine (algorithm given below). We have a list of 50 URLs listed as verified sources. <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823179-77dc6600-c890-11ea-8295-e847f5b48d07.png"> </p> </li>
     <li> bias score - The probability of a tweet containing offensive language. </li>
     <li> class weights - Weightage given to each of the labels by BERT finetuned on the train set</li>
    </ul>
@@ -62,6 +62,7 @@ We design a simple static HTML page to obtain the tweet id/URL, as user input, a
 </p>
 
 ## FLASK API:
-process.py is a working code to host the GUI in the localhost. It can be easily modified to host the demo in any server as well.
+The GUI has been hosted in a IBM server (http://pca.sl.cloud9.ibm.com:1999/) which is accessible internally. <br/>
+process.py is a working code to host the GUI in the localhost. It can be easily modified to host the demo in any other server as well.
 
 

@@ -1,3 +1,5 @@
+## Multilingual Transformer Based & Bi-LSTM Based Classifiers
+
 This section provides a detailed description on how to use the best performing multilingual models. 
 These models have currently not been integrated with the GUI and is a work in progress.
 

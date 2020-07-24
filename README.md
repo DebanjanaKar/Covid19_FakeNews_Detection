@@ -8,7 +8,7 @@
 </p>
 
 
-This system aims to classify whether a tweet contains a verifiable claim or not in real-time and has been specifically trained to detect COVID19 related fake news. We use AI based techniques to process the tweet text and use it, along with user features, to classify the tweets as either **REAL** or **FAKE**. We are handling tweets in three different languages: **English, Hindi and Bengali**. The development phases of our project is shown below and the details of the steps are described in the following sub-sections.<br/>
+This system aims to classify whether a tweet contains a verifiable claim or not in real-time and has been specifically trained to detect COVID19 related fake news. We use AI based techniques to process the tweet text and use it, along with user features, to classify the tweets as either **REAL** or **FAKE**. We are handling tweets in three different languages: **English, Hindi and Bengali**. The development phases of our project is shown below and the details of the steps are described in the following sub-sections. <ins>The code is available at : https://github.com/DebanjanaKar/Covid19_FakeNews_Detection where every folder has its own README with detailed instructions.</ins> <br/>
 <p align="center">
   <img width="300" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87848329-cf182000-c8fc-11ea-9e1f-11d9466c5e6e.png">
 </p>

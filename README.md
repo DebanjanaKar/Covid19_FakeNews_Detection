@@ -1,4 +1,4 @@
-# तथ्यCov : Detecting Fake Tweets in the time of COVID 19
+# TathyaCov : Detecting Fake Tweets in the time of COVID 19
 <p align="center">
 <img width="1000" height="200" alt="title" src="https://user-images.githubusercontent.com/19144385/87828882-9300a300-c89b-11ea-8e18-6325dfe88dfb.png">
 </p>

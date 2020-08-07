@@ -67,7 +67,7 @@ We design a simple static HTML page to obtain the tweet id/URL, as user input, a
 </p>
 
 ## FLASK API:
-The GUI has been hosted in a IBM server (http://pca.sl.cloud9.ibm.com:1999/) which is accessible internally. <br/>
+The GUI has been hosted in a IBM server (http://pca.sl.cloud9.ibm.com:1999/) which is accessible within IBM domain. <br/>
 process.py is a working code to host the GUI in the localhost. It can be easily modified to host the demo in any other server as well.
 
 

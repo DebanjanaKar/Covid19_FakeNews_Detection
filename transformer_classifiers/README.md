@@ -1,7 +1,6 @@
 ## Multilingual Transformer Based Classifiers
 
 This section provides a detailed description on how to use the best performing multilingual models. 
-These models have currently not been integrated with the GUI and is a work in progress.
 
 #### Pre-requisites :
 1. `Linux` system (WSL works for Windows Systems)
@@ -19,7 +18,7 @@ While we provide the steps below on how to train and test from scratch, one can 
 #### For using the pretrained model : 
 
 1. Download the pretrained model from : https://ibm.box.com/v/pretrained-indic-model and put it in a folder 'models'
-2. Set the path to the pretrained model in the 'predict(path, sent)` call in the script `prediction.ipynb`
+2. Set the path to the pretrained model in the `predict(path, sent)` call in the script `prediction.ipynb`
 
 #### For training from scratch :
 For each of the files below, set the correct path of your local server

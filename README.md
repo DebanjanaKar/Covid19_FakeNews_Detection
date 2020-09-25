@@ -8,16 +8,16 @@
 </p>
 
 
-This system aims to classify whether a tweet contains a verifiable claim or not in real-time and has been specifically trained to detect COVID19 related fake news. We use AI based techniques to process the tweet text and use it, along with user features, to classify the tweets as either **REAL** or **FAKE**. We are handling tweets in three different languages: **English, Hindi and Bengali**. The development phases of our project is shown below and the details of the steps are described in the following sub-sections. <ins>The code is available at : https://github.com/DebanjanaKar/Covid19_FakeNews_Detection where every folder has its own README with detailed instructions.</ins> <br/>
+This system aims to classify whether a tweet contains a verifiable claim or not in real-time and has been specifically trained to detect COVID19 related fake news. We use AI based techniques to process the tweet text and use it, along with user features, to classify the tweets as either **REAL** or **FAKE**. We are handling tweets in three different languages: **English, Hindi and Bengali**. The development phases of our project is shown below and the details of the steps are described in the following sub-sections. The code is available at : <ins>https://github.com/DebanjanaKar/Covid19_FakeNews_Detection</ins> .<br/>
 <p align="center">
   <img width="300" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87848329-cf182000-c8fc-11ea-9e1f-11d9466c5e6e.png">
 </p>
 
 ## DATASET USED:
-We use the **Infodemic dataset** (https://github.com/firojalam/COVID-19-tweets-for-check-worthiness) for training purpose. We consider the English tweets from the Infodemic dataset and scrap Bengali and Hindi tweets from the twitter which are related to Covid-19. Fresh annotations were done and incorporated to create a larger Indic dataset for this task. For this purpose, scraping and parsing  tools were created which might be helpful to further mine Indic data.
+We create the **Indic-covidemic tweet dataset** and use it for training and testing purpose. We consider the English tweets from the Infodemic dataset (https://github.com/firojalam/COVID-19-tweets-for-check-worthiness) and scrape Bengali and Hindi tweets from Twitter which are related to COVID-19. Fresh annotations were done and incorporated to create the larger Indic dataset for this task. For this purpose, scraping and parsing  tools were created which might be helpful to further mine Indic data.
 
 ## METHOD:
-We experimented with two different models to handle the tweet classification. In one settings, we consider a mono-lingual model, for handling English tweets. We extend the concept, by replacing the classifier with the multi-lingual one, where we consider tweets from English, Hindi and Bengali languages, as of now. Due to less complexity, the monolingual classifier achieves better result and also beats the State of the Art (SOTA) result on Infodemic dataset. On the other hand, the multi-lingual classifier gives comparable performance, while supporting multiple languages. We discuss both of these classifiers in details in the following sub-sections.
+We experimented with two different models to handle the tweet classification. In one setting, we consider a mono-lingual model, for handling English tweets. We extend the concept, by replacing the classifier with the multi-lingual one, where we consider tweets from English, Hindi and Bengali languages, as of now. The main essence of our proposed approach lies in the features we have used for the classification task, the different classifiers and  their  corresponding  adaptation  done  for  identifying  the fake tweets.
 
 #### MONO-LINGUAL CLASSIFIER:
 The architecture of the monolingual classifier is shown below.  
@@ -69,5 +69,7 @@ We design a simple static HTML page to obtain the tweet id/URL, as user input, a
 ## FLASK API:
 The GUI has been hosted in a IBM server (http://pca.sl.cloud9.ibm.com:1999/) which is accessible within IBM domain. <br/>
 process.py is a working code to host the GUI in the localhost. It can be easily modified to host the demo in any other server as well.
+
+## Citation :
 
 

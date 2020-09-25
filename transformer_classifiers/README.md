@@ -23,7 +23,7 @@ While we provide the steps below on how to train and test from scratch, one can 
 #### For training from scratch :
 For each of the files below, set the correct path of your local server
 
-1. Use `preprocess.ipynb` to preprocess the dataset
+1. Copy the data folder of this repo to this directory and run `preprocess.ipynb` to preprocess the dataset
 2. For feature extraction :
 - Run `extract_toxic.ipynb` to calculate the bias  score.
 - Run `fact_check.py` to get link scores.

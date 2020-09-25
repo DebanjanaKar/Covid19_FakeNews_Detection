@@ -13,50 +13,40 @@ This system aims to classify whether a tweet contains a verifiable claim or not 
   <img width="300" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87848329-cf182000-c8fc-11ea-9e1f-11d9466c5e6e.png">
 </p>
 
-## DATASET USED:
+## Dataset:
 We create the **Indic-covidemic tweet dataset** and use it for training and testing purpose. We consider the English tweets from the Infodemic dataset (https://github.com/firojalam/COVID-19-tweets-for-check-worthiness) and scrape Bengali and Hindi tweets from Twitter which are related to COVID-19. Fresh annotations were done and incorporated to create the larger Indic dataset for this task. For this purpose, scraping and parsing  tools were created which might be helpful to further mine Indic data.
 
-## METHOD:
+## Method:
 We experimented with two different models to handle the tweet classification. In one setting, we consider a mono-lingual model, for handling English tweets. We extend the concept, by replacing the classifier with the multi-lingual one, where we consider tweets from English, Hindi and Bengali languages, as of now. The main essence of our proposed approach lies in the features we have used for the classification task, the different classifiers and  their  corresponding  adaptation  done  for  identifying  the fake tweets.
 
-#### MONO-LINGUAL CLASSIFIER:
-The architecture of the monolingual classifier is shown below.  
+The architecture of the classifier is as shown below.  
 <p align="center">
-  <img width="400" alt="mono_ar" src="https://user-images.githubusercontent.com/19144385/87823196-7dd24700-c890-11ea-81eb-a44042e68002.png">
+  <img width="300" alt="mono_ar" src="https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/blob/master/images/architecture.png">
 </p>
-We use various textual and user related features for the classification task. The tweet is preprocessed where the mentions, hashtags, html links are removed for further processing. The features used for monolingual English tweet classifier are as follows: <br />
+We have used various textual and user related features for the classification task as follows: <br />
         <ul>
-        <li>sentence encoding of the tweet using Sentence BERT (sBERT), finetuned on NLI dataset.</li>
-        <li>10 tweet features</li>
-        <li>9 User features</li>
+        <li>bert based sentence encoding of the tweets</li>
+        <li>tweet features</li>
+        <li>User features</li>
+        <li> link score - Ratio of similarity calculated between a given tweet and titles of verified URL list obtained on querying the tweet on Google Search Engine (algorithm given below). We have a list of 50 URLs listed as verified sources. <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823179-77dc6600-c890-11ea-8295-e847f5b48d07.png"> </p> </li>
+        <li> bias score - The probability of a tweet containing offensive language. </li>
         </ul>
         <p align="center">
-          <img width="682" alt="mono_features" src="https://user-images.githubusercontent.com/19144385/87824733-706a8c00-c893-11ea-9b9e-d936fd581675.png">
+          <img width="682" alt="mono_features" src="https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/blob/master/images/correlation.png">
         </p>
-    It is evident from the correlation plots that subset of user features and tweet features are helpful. We leave it for the classifier to weigh the relevant features accordingly, for the final classification task. For this purpose, we have used Random Forest Classifier. We also experimented with different other classifiers, details of which is given below.
+    It is evident from the correlation plots that subset of user features and tweet features are helpful. We leave it for the classifier to weigh the relevant features accordingly, for the final classification task. We have experimented with different classifiers, details of which is given below.
     <p align="center">
        <img width="500" alt="mono_result" src="https://user-images.githubusercontent.com/19144385/87823203-7f9c0a80-c890-11ea-86dd-486f59324418.png">
     </p>
- 
-#### MULTI-LINGUAL CLASSIFIER:
-The architecture of the multi-lingual classifier is shown below:
-<p align="center">
-  <img width="600" alt="ml_ar" src="https://user-images.githubusercontent.com/19144385/87823189-7b6fed00-c890-11ea-9d72-ba52e130739c.png">
-</p>
-The tweet preprocessing is done (as mentioned above) and we use four different types of features for this task, which are as follows:
-  <ul>
-    <li> sentence encoding of the tweet using pretrained multilingual BERT (mBERT) model </li>
-    <li> link score - Ratio of similarity calculated between a given tweet and titles of verified URL list obtained on querying the tweet on Google Search Engine (algorithm given below). We have a list of 50 URLs listed as verified sources. <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823179-77dc6600-c890-11ea-8295-e847f5b48d07.png"> </p> </li>
-    <li> bias score - The probability of a tweet containing offensive language. </li>
-    <li> class weights - Weightage given to each of the labels by BERT finetuned on the train set</li>
-   </ul>
-<!--- The correlation of the last three features, i.e. link score, bias score and class weights, with the class label is shown below. It is clear from the correlation map that these features play an important role in determining the correct class (fake or real) of the tweet.
-<img width="400" alt="ml_feature_corr" src="https://user-images.githubusercontent.com/19144385/87823194-7ca11a00-c890-11ea-9083-673fb51f8d23.png"><br/> --->
-We have tested the performance of the classifier in different settings, details of which is shown in the below table.
-<p align="center">
-<img width="500" alt="multi_result" src="https://user-images.githubusercontent.com/19144385/87823208-81fe6480-c890-11ea-9c9b-c81bb24080f4.png">
-</p>
 
+## Usage :
+
+Each of the folders are equipped with detailed READMEs on how to run the scripts.
+
+- For dataset, refer to the `data` folder
+- To scrape and annotate more dataset, refer to `scraping_tools` folder (We encourage extending the dataset to accomadate more annotations in languages explored and unexplored in this work)
+- For the transformer based classifiers, refer to the `transformer_classifiers` folder
+- For ML based models and GUI implementation, refer to the `GUI_MLModels` folder
 
 ## Graphical User Interface (GUI):
 We design a simple static HTML page to obtain the tweet id/URL, as user input, and detect if the tweet is real or fake. Though our monolingual English classifier gave the best performance, even by beating the SOTA, we choose the multi-lingual classifier for its wider application. Some of the snapshots of our demo is shown below:

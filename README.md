@@ -26,7 +26,7 @@ We have used various textual and user related features for the classification ta
         <ul>
         <li>bert based sentence encoding of the tweets</li>
         <li>tweet features</li>
-        <li>User features <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823225-875baf00-c890-11ea-8c7b-6c57a4198eb6.png"> </p> </li>
+        <li>user features <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823225-875baf00-c890-11ea-8c7b-6c57a4198eb6.png"> </p> </li>
         <li> link score - Ratio of similarity calculated between a given tweet and titles of verified URL list obtained on querying the tweet on Google Search Engine (algorithm given below). We have a list of 50 URLs listed as verified sources. <p align="center"> <img width="300" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823179-77dc6600-c890-11ea-8295-e847f5b48d07.png"> </p> </li>
         <li> bias score - The probability of a tweet containing offensive language. </li>
         </ul>
@@ -61,5 +61,5 @@ The GUI has been hosted in a IBM server (http://pca.sl.cloud9.ibm.com:1999/) whi
 process.py is a working code to host the GUI in the localhost. It can be easily modified to host the demo in any other server as well.
 
 ## Citation :
-
+If you find our work useful, please cite it in your work using:
 

@@ -7,7 +7,6 @@
   <b><ins> DEMO VIDEO: https://youtu.be/pdWoBxBu9-k </ins></b>
 </p>
 
-
 This system aims to classify whether a tweet contains a verifiable claim or not in real-time and has been specifically trained to detect COVID19 related fake news. We use AI based techniques to process the tweet text and use it, along with user features, to classify the tweets as either **REAL** or **FAKE**. We are handling tweets in three different languages: **English, Hindi and Bengali**. The development phases of our project is shown below and the details of the steps are described in the following sub-sections. The code is available at : <ins>https://github.com/DebanjanaKar/Covid19_FakeNews_Detection</ins> .<br/>
 <p align="center">
   <img width="300" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87848329-cf182000-c8fc-11ea-9e1f-11d9466c5e6e.png">
@@ -27,16 +26,17 @@ We have used various textual and user related features for the classification ta
         <ul>
         <li>bert based sentence encoding of the tweets</li>
         <li>tweet features</li>
-        <li>User features</li>
-        <li> link score - Ratio of similarity calculated between a given tweet and titles of verified URL list obtained on querying the tweet on Google Search Engine (algorithm given below). We have a list of 50 URLs listed as verified sources. <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823179-77dc6600-c890-11ea-8295-e847f5b48d07.png"> </p> </li>
+        <li>User features <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823225-875baf00-c890-11ea-8c7b-6c57a4198eb6.png"> </p> </li>
+        <li> link score - Ratio of similarity calculated between a given tweet and titles of verified URL list obtained on querying the tweet on Google Search Engine (algorithm given below). We have a list of 50 URLs listed as verified sources. <p align="center"> <img width="300" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823179-77dc6600-c890-11ea-8295-e847f5b48d07.png"> </p> </li>
         <li> bias score - The probability of a tweet containing offensive language. </li>
         </ul>
         <p align="center">
-          <img width="682" alt="mono_features" src="https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/blob/master/images/correlation.png">
+          <img width="450" alt="mono_features" src="https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/blob/master/images/correlation.png">
         </p>
-    It is evident from the correlation plots that subset of user features and tweet features are helpful. We leave it for the classifier to weigh the relevant features accordingly, for the final classification task. We have experimented with different classifiers, details of which is given below.
+    It is evident from the correlation plot that a subset of user features and tweet features can be helpful. We have experimented with different classifiers, the results of which are as given below.
     <p align="center">
-       <img width="500" alt="mono_result" src="https://user-images.githubusercontent.com/19144385/87823203-7f9c0a80-c890-11ea-86dd-486f59324418.png">
+       <img width="350" alt="mono_result" src="https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/blob/master/images/mono_results.png">
+        <img width="350" alt="multi_result" src="https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/blob/master/images/multi_results.png">
     </p>
 
 ## Usage :

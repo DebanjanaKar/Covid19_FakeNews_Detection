@@ -49,13 +49,12 @@ def fake_classify(train_set, eval_set, test_set, seed):
 
     model = ClassificationModel('bert', 'bert-base-multilingual-uncased', args={ 'max_seq_length' : 512, 'num_train_epochs': 3, 'overwrite_output_dir': True, 'manual_seed' : seed}, use_cuda = True)
     print(model.args)
+    
     # Train the model
-
     model.train_model(train_set)
 
     # Evaluate the model
     result, model_outputs, wrong_predictions = model.eval_model(test_set, f1=sklearn.metrics.f1_score, acc=sklearn.metrics.accuracy_score)
-    #r, m, p =  model.eval_model(eval_set, f1=sklearn.metrics.f1_score, acc=sklearn.metrics.accuracy_score)
     #print('Evaluation results = ', results(results))
 
     return result, model_outputs, wrong_predictions

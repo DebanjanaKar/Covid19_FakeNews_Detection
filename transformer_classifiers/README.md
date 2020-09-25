@@ -1,4 +1,4 @@
-## Multilingual Transformer Based & Bi-LSTM Based Classifiers
+## Multilingual Transformer Based Classifiers
 
 This section provides a detailed description on how to use the best performing multilingual models. 
 These models have currently not been integrated with the GUI and is a work in progress.
@@ -25,14 +25,15 @@ While we provide the steps below on how to train and test from scratch, one can 
 For each of the files below, set the correct path of your local server
 
 1. Use `preprocess.ipynb` to preprocess the dataset
-2. For finetuning transformer based classifier :
-- Run `bert_multilingual_kfold_classifier.py`
-- Run `prediction.ipynb` for predicting.
-3. For training bilstm based classifier :
+2. For feature extraction :
 - Run `extract_toxic.ipynb` to calculate the bias  score.
 - Run `fact_check.py` to get link scores.
-- Run `feature_embedder.ipynb` to embed all features to be pushed into the final classifier. In this script, you can either use the pretrained weights of the training set already given in the resources folder as `multi_raw_outputs.pickle` or you can save the weights you hav obtained while finetuning the transformer based classifier.
-- Run `bilstm_based_classifier.ipynb` to train and test the model.
+- Run `feature_embedder.ipynb` to embed all the extracted features to be pushed into the final classifier.
+- Run `feature_embedder_user.ipynb` to embed user features to be pushed into the final classifier.
+3. For training transformer based classifier :
+- Run `bert_binary_classifier.py` for running monolingual, crosslingual and multilingual text-based experiments. Examples of all the language configurations are mentioned in the script. You would want to comment out all the configurations except the one of your choice and then train and evaluate.
+- Run `bert_binary_userft.py` for running monolingual, crosslingual and multilingual text+features-based experiments. The same language configurations can be adapted to this script as well.
+4. For inference, run `prediction.ipynb` loading your trained model.
 
 
 

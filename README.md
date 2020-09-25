@@ -24,11 +24,11 @@ The architecture of the classifier is as shown below.
 </p>
 We have used various textual and user related features for the classification task as follows: <br />
         <ul>
-        <li>bert based sentence encoding of the tweets</li>
-        <li>tweet features</li>
-        <li>user features <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823225-875baf00-c890-11ea-8c7b-6c57a4198eb6.png"> </p> </li>
-        <li> link score - Ratio of similarity calculated between a given tweet and titles of verified URL list obtained on querying the tweet on Google Search Engine (algorithm given below). We have a list of 50 URLs listed as verified sources. <p align="center"> <img width="300" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823179-77dc6600-c890-11ea-8295-e847f5b48d07.png"> </p> </li>
-        <li> bias score - The probability of a tweet containing offensive language. </li>
+        <li>bert based sentence encoding of the tweets (TxtEmbd)</li> 
+        <li>tweet features (twttxt)</li>
+        <li>user features (twtusr) <p align="center"> <img width="400" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823225-875baf00-c890-11ea-8c7b-6c57a4198eb6.png"> </p> </li>
+        <li> link score (FVer) - Ratio of similarity calculated between a given tweet and titles of verified URL list obtained on querying the tweet on Google Search Engine (algorithm given below). We have a list of 50 URLs listed as verified sources. <p align="center"> <img width="300" alt="link_score" src="https://user-images.githubusercontent.com/19144385/87823179-77dc6600-c890-11ea-8295-e847f5b48d07.png"> </p> </li>
+        <li> bias score (Bias) - The probability of a tweet containing offensive language. </li>
         </ul>
         <p align="center">
           <img width="450" alt="mono_features" src="https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/blob/master/images/correlation.png">
@@ -61,5 +61,5 @@ The GUI has been hosted in a IBM server (http://pca.sl.cloud9.ibm.com:1999/) whi
 process.py is a working code to host the GUI in the localhost. It can be easily modified to host the demo in any other server as well.
 
 ## Citation :
-If you find our work useful, please cite it in your work using:
+If you find our work useful, please cite our work.
 

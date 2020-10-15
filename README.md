@@ -61,5 +61,15 @@ The GUI has been hosted in a IBM server (http://pca.sl.cloud9.ibm.com:1999/) whi
 process.py is a working code to host the GUI in the localhost. It can be easily modified to host the demo in any other server as well.
 
 ## Citation :
-If you find our work useful, please cite our work.
+If you find our work useful, please cite our work as:
+```
+@misc{kar2020rumours,
+      title={No Rumours Please! A Multi-Indic-Lingual Approach for COVID Fake-Tweet Detection}, 
+      author={Debanjana Kar and Mohit Bhardwaj and Suranjana Samanta and Amar Prakash Azad},
+      year={2020},
+      eprint={2010.06906},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
 

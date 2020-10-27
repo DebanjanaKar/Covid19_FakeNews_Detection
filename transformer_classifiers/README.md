@@ -17,7 +17,7 @@ While we provide the steps below on how to train and test from scratch, one can 
 
 #### For using the pretrained model : 
 
-1. Download the pretrained model from : https://ibm.box.com/v/pretrained-indic-model and put it in a folder 'models'
+1. Download the pretrained model from [here](https://drive.google.com/file/d/17oaJZN-HVx8-0uxuNH0l3J10IjrzhWLi/view?usp=sharing) and put it in a folder 'models'
 2. Set the path to the pretrained model in the `predict(path, sent)` call in the script `prediction.ipynb`
 
 #### For training from scratch :

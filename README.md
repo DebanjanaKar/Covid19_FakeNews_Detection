@@ -1,4 +1,4 @@
-# TathyaCov : Detecting Fake Tweets in the time of COVID 19
+# TathyaCov : Detecting Fake Tweets in the times of COVID 19
 <p align="center">
 <img width="1000" height="200" alt="title" src="https://user-images.githubusercontent.com/19144385/87828882-9300a300-c89b-11ea-8e18-6325dfe88dfb.png">
 </p>
@@ -12,8 +12,19 @@ This repository contains the implementation of the paper : **"No Rumours Please!
   <img width="300" alt="flowchart" src="https://user-images.githubusercontent.com/19144385/87848329-cf182000-c8fc-11ea-9e1f-11d9466c5e6e.png">
 </p>
 
+## Structure :
+
+Each of the folders are equipped with detailed READMEs on how to run the scripts.
+
+- For dataset, refer to the [data](https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/tree/master/data/Language_CSVs) folder
+- To scrape and annotate more dataset, refer to [scraping_tools](https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/tree/master/scraping_tools) folder (We encourage extending the dataset to accomadate more annotations in languages explored and unexplored in this work)
+- For the transformer based classifiers, refer to the [transformer_classifiers](https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/tree/master/transformer_classifiers) folder
+- For ML based models and GUI implementation, refer to the [GUI_MLModels](https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/tree/master/GUI_MLModels) folder
+
+We next provide a very brief overview of the dataset and the methods used in our work in the following sections.
+
 ## Dataset:
-We create the **Indic-covidemic tweet dataset** and use it for training and testing purpose. We consider the English tweets from the Infodemic dataset (https://github.com/firojalam/COVID-19-tweets-for-check-worthiness) and scrape Bengali and Hindi tweets from Twitter which are related to COVID-19. Fresh annotations were done and incorporated to create the larger Indic dataset for this task. For this purpose, scraping and parsing  tools were created which might be helpful to further mine Indic data.
+We create the **Indic-covidemic tweet dataset** and use it for training and testing purpose. We consider the English tweets from the [Infodemic dataset](https://github.com/firojalam/COVID-19-tweets-for-check-worthiness) and scrape Bengali and Hindi tweets from Twitter which are related to COVID-19. Fresh annotations were done and incorporated to create the larger Indic dataset for this task. For this purpose, [scraping and parsing tools](https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/tree/master/scraping_tools) were created which might be helpful to further mine Indic data. We have published our annotated dataset for research purposes which can be found [here](https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/tree/master/data/Language_CSVs).
 
 ## Method:
 We experimented with two different models to handle the tweet classification. In one setting, we consider a mono-lingual model, for handling English tweets. We extend the concept, by replacing the classifier with the multi-lingual one, where we consider tweets from English, Hindi and Bengali languages, as of now. The main essence of our proposed approach lies in the features we have used for the classification task, the different classifiers and  their  corresponding  adaptation  done  for  identifying  the fake tweets.
@@ -38,15 +49,6 @@ We have used various textual and user related features for the classification ta
        <img width="350" alt="mono_result" src="https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/blob/master/images/mono_results.png">
         <img width="350" alt="multi_result" src="https://github.com/DebanjanaKar/Covid19_FakeNews_Detection/blob/master/images/multi_results.png">
     </p>
-
-## Usage :
-
-Each of the folders are equipped with detailed READMEs on how to run the scripts.
-
-- For dataset, refer to the `data` folder
-- To scrape and annotate more dataset, refer to `scraping_tools` folder (We encourage extending the dataset to accomadate more annotations in languages explored and unexplored in this work)
-- For the transformer based classifiers, refer to the `transformer_classifiers` folder
-- For ML based models and GUI implementation, refer to the `GUI_MLModels` folder
 
 ## Graphical User Interface (GUI):
 We design a simple static HTML page to obtain the tweet id/URL, as user input, and detect if the tweet is real or fake. Though our monolingual English classifier gave the best performance, even by beating the SOTA, we choose the multi-lingual classifier for its wider application. Some of the snapshots of our demo is shown below:

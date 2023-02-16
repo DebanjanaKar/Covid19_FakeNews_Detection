@@ -68,6 +68,6 @@ transformers==3.0.2
 tweepy==3.9.0
 urllib3==1.25.9
 wcwidth==0.2.5
-Werkzeug==1.0.1
+Werkzeug==2.2.3
 wrapt==1.12.1
 zipp==3.1.0
